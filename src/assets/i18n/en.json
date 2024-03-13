@@ -1,0 +1,88 @@
+{
+    "HOME":{
+        "menu":"Menu",
+        "home":"Home",
+        "filters":"Filters",
+        "all":"All",
+        "incomplete":"Incomplete",
+        "completed":"Completed",
+        "noTasksToDisplay":"No Tasks to display",
+        "noTasksFound":"No Tasks found",
+        "logout":"Logout",
+        "search":"Search"
+    },
+    "MOVIE_LIST":{
+        "moviesList":"Movies List"
+    },
+    "SIGNUP":{
+        "title": "Signup",
+        "name": "Name",
+        "email": "Email",
+        "phoneNumber": "Phone Number",
+        "password": "Password",
+        "signUp": "Signup",
+        "alreadyHaveAccount": "Already have an account?",
+        "loginHere": "Login Here",
+        "login": "Login",
+        "dontHaveAccount": "Don't have an account?",
+        "signupHere": "Signup Here",
+        "copyright":"2024 Reminder. All Rights Reserved.",
+        "namePlaceHolder":"Please Enter your name",
+        "emailPlaceHolder":"email@domain.com",
+        "phoneNumberPlaceHolder":"91XXXXXXXX",
+        "passwordPlaceHolder":"Please Enter password",
+        "nameError":"Please enter a valid name",
+        "emailError":"Please enter a valid email",
+        "phoneNumberError":"Please enter a valid 10-digit phone number",
+        "passwordError1":"Password is required.",
+        "passwordError2":"Password must be at least 8 characters long.",
+        "passwordError3":"Password must contain at least one numeric character.",
+        "passwordError4":"Password must be at least 8 characters long and include at least 1 number"
+    },
+    "ADD_TASK":{
+        "addTask":"Add Task",
+        "updateTask":"Update Task",
+        "taskName":"Task Name",
+        "taskNamePlaceHolder":"Enter Task Name",
+        "taskNameError":"Please Enter Task Name",
+        "taskPriority":"Task Priority",
+        "taskPriorityPlaceHolder":"Select a Task Priority",
+        "high":"High",
+        "medium":"Medium",
+        "low":"Low",
+        "taskPriorityError":"Please Select a Task Priority",
+        "taskDescription":"Task Description",
+        "taskDescriptionPlaceHolder":"Enter Task Description",
+        "taskDescriptionError":"Please Enter Task Description",
+        "submit":"Submit",
+        "update":"Update"
+      },
+      "MESSAGES": {
+        "userCreated": "User Created",
+        "enterDetails":"Please enter all details",
+        "emailExists":"Email or Phone Number already exists",
+        "loggedIn":"Logged in successfully",
+        "emailPhoneError":"Email or password is wrong",
+        "taskDeleted":"Task Deleted Successfully",
+        "taskNotDeleted":"Task didn't deleted",
+        "taskNotUpdated":"Task didn't Update",
+        "taskAdded":"Task Added",
+        "taskNotCreated":"Task Not Created",
+        "enterTaskDetails":"Please enter all task details",
+        "taskUpdatedSuccessfully":"Task Updated Successfully"
+
+      },
+      "ACTIONSHEET":{
+        "changeLanguage":"Change Language",
+        "english":"English",
+        "spanish":"Spanish",
+        "cancel":"Cancel"
+      },
+
+      "ALERT":{
+        "confirmDelete":"Confirm Delete",
+        "confirmDeleteMessage":"Are you sure you want to delete this task?",
+        "cancel":"Cancel",
+        "ok":"Ok"
+      }
+}

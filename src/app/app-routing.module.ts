@@ -8,9 +8,30 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'signup',
     pathMatch: 'full'
   },
+  {
+    path: 'signup',
+    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+  },
+  {
+    path: 'to-do-form',
+    loadChildren: () => import('./to-do-form/to-do-form.module').then( m => m.ToDoFormPageModule)
+  },
+  {
+    path: 'movie-list',
+    loadChildren: () => import('./movie-list/movie-list.module').then( m => m.MovieListPageModule)
+  },
+  {
+    path: 'update-task',
+    loadChildren: () => import('./update-task/update-task.module').then( m => m.UpdateTaskPageModule)
+  },
+  {
+    path: 'languages',
+    loadChildren: () => import('./languages/languages.module').then( m => m.LanguagesPageModule)
+  },
+
 ];
 
 @NgModule({

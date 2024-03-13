@@ -1,0 +1,125 @@
+<!-- signup.page.html -->
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Signup</ion-title>
+  </ion-toolbar>
+  
+</ion-header> -->
+<ion-icon size="large" horizontal="end" name="language-sharp"
+  style="padding-top: 45px; padding-left: 85%;" (click)="presentLanguageActionSheet()"
+></ion-icon>
+
+  
+
+
+
+
+<ion-content class="signup" scroll-y="false" scrollX="false" >
+  <div class="image">
+    <ion-img
+    src="https://www.creativefabrica.com/wp-content/uploads/2023/07/04/To-do-cute-sticker-Planner-reminder-tag-Graphics-73678348-1.png"
+    alt="To do"
+  ></ion-img>
+ 
+
+  </div>
+  <form *ngIf="showSignup" #signupForm="ngForm" (ngSubmit)="createUser(signupForm)" >
+
+      <ion-item>
+        <ion-input labelPlacement="stacked" label="{{'SIGNUP.name'| translate}}" placeholder="{{'SIGNUP.namePlaceHolder'| translate}}" type="text" name="name" [(ngModel)]="name" required>
+          <ion-icon slot="start" name="person-outline" aria-hidden="true"></ion-icon>
+        </ion-input>
+      </ion-item>
+      <ion-item *ngIf="signupForm.controls['name']?.invalid && (signupForm.controls['name']?.dirty || signupForm.controls['name']?.touched)">
+        <ion-text color="danger">
+          <p>{{'SIGNUP.nameError'|translate}}</p>
+        </ion-text>
+      </ion-item> 
+      
+
+      <ion-item>
+        <ion-input labelPlacement="stacked" label="{{'SIGNUP.email'| translate}}" placeholder="{{'SIGNUP.emailPlaceHolder'|translate}}" type="email" name="email" [(ngModel)]="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+          <ion-icon slot="start" name="mail-outline" aria-hidden="true"></ion-icon>
+        </ion-input>
+      </ion-item>
+      <ion-item *ngIf="signupForm.controls['email']?.invalid && (signupForm.controls['email']?.dirty || signupForm.controls['email']?.touched)">
+        <ion-text color="danger">
+          <p>{{'SIGNUP.emailError'|translate}}</p>
+        </ion-text>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-input labelPlacement="stacked" label="{{'SIGNUP.phoneNumber'|translate}}" placeholder="{{'SIGNUP.phoneNumberPlaceHolder'|translate}}" type="tel" name="phoneNumber" [(ngModel)]="phoneNumber" pattern="^[6-9]\d{9}$" required>
+          <ion-icon slot="start" name="call-outline" aria-hidden="true"></ion-icon>
+        </ion-input>
+      </ion-item>
+      <ion-item *ngIf="signupForm.controls['phoneNumber']?.invalid && (signupForm.controls['phoneNumber']?.dirty || signupForm.controls['phoneNumber']?.touched)">
+        <ion-text color="danger">
+          <p>{{'SIGNUP.phoneNumberError'|translate}}</p>
+        </ion-text>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-input labelPlacement="stacked" label="{{'SIGNUP.password'|translate}}" placeholder="{{'SIGNUP.passwordPlaceHolder'|translate}}" type="password" name="password" [(ngModel)]="password" 
+            minlength="8" pattern=".*\d.*" required>
+          <ion-icon slot="start" name="lock-closed-outline" aria-hidden="true"></ion-icon>
+        </ion-input>
+      </ion-item>
+      <ion-item *ngIf="signupForm.controls['password']?.invalid && (signupForm.controls['password']?.dirty || signupForm.controls['password']?.touched)">
+        <ion-text color="danger" *ngIf="signupForm.controls['password']?.errors?.['required']">
+          {{'SIGNUP.passwordError1'|translate}}
+        </ion-text>
+        <ion-text color="danger" *ngIf="signupForm.controls['password']?.errors?.['minlength']">
+          {{'SIGNUP.passwordError2'|translate}}
+        </ion-text>
+        <ion-text color="danger" *ngIf="signupForm.controls['password']?.errors?.['pattern']">
+          {{'SIGNUP.passwordError3'|translate}}
+        </ion-text>
+      </ion-item>
+
+
+    <ion-button size="medium" style="margin-top: 16px; padding-left: 12px; padding-right: 12px; padding-bottom: 7px;" type="submit" [disabled]="!signupForm.form.valid"> {{'SIGNUP.signUp'|translate}} </ion-button>
+    
+    <span class="span"> {{'SIGNUP.alreadyHaveAccount'|translate}} <a (click)="showSignup =false; toLogin();"> {{'SIGNUP.loginHere'|translate}} </a> </span>
+  </form>
+
+
+
+  <form *ngIf="!showSignup" #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)" 
+  >
+    <ion-item>
+      <ion-input labelPlacement="stacked" label="{{'SIGNUP.email'|translate}}" placeholder="{{'SIGNUP.emailPlaceHolder'|translate}}" type="email" name="email" [(ngModel)]="email" required>
+        <ion-icon slot="start" name="mail-outline" aria-hidden="true"></ion-icon>
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="loginForm.controls['email']?.invalid && (loginForm.controls['email']?.dirty || loginForm.controls['email']?.touched)">
+      <ion-text color="danger">
+        <p>{{'SIGNUP.emailError'|translate}}</p>
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-input labelPlacement="stacked" label="{{'SIGNUP.password'|translate}}" placeholder="{{'SIGNUP.passwordPlaceHolder'|translate}}" type="password" name="password" [(ngModel)]="password" required>
+        <ion-icon slot="start" name="lock-closed-outline" aria-hidden="true"></ion-icon>
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="loginForm.controls['password']?.invalid && (loginForm.controls['password']?.dirty || loginForm.controls['password']?.touched)">
+      <ion-text color="danger">
+        <p> {{'SIGNUP.passwordError4'|translate}} </p>
+      </ion-text>
+    </ion-item>
+
+    <ion-button type="submit" size="medium" style="margin-top: 16px; padding-left: 12px; padding-right: 12px; padding-bottom: 7px;" > {{'SIGNUP.login'|translate}} </ion-button>
+    <span class="span"> {{'SIGNUP.dontHaveAccount'|translate}} <a (click)="showSignup = true; toSignup(); "> {{'SIGNUP.signupHere'|translate}} </a> </span>
+  </form>
+
+
+</ion-content>
+
+<ion-footer>
+  <div class="copyright">
+    &copy; {{'SIGNUP.copyright'|translate}}
+  </div>
+</ion-footer>

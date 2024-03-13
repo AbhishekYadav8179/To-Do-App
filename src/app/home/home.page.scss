@@ -1,27 +1,90 @@
-#container {
-  text-align: center;
+ion-fab-button {
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  --background: #b7f399;
+  --background-activated: #87d361;
+  --background-hover: #a3e681;
+  //--border-radius: 15px;
+  --box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --color: black;
+    //padding-bottom: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+
+
+.delete-icon{
+  padding-bottom: 10px;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.pagination-container{
+  justify-content: center;
+  display: flex;
+  margin-right: 45px;
+  //padding-right: 50px;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.active-button {
+  --background: #007bff;
+  display: flex;
+  color: white;
 }
 
-#container a {
-  text-decoration: none;
+.button-container {
+  display: flex;
+  padding: auto;
+  
 }
+
+ion-button {
+  flex: 1;
+  //--background: #93e9be;
+ // --background-hover: #9ce0be;
+  
+  --background-focused: blue;
+
+  --color: black;
+
+  //--border-radius: 0;
+  --border-color: #000;
+  --border-style: solid;
+  --border-width: 1px;
+
+  --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+
+  --ripple-color: deeppink;
+
+}
+
+.filterButton{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+ion-button .filterButton{
+  --background: #403B4A;  /* fallback for old browsers */
+--background: -webkit-linear-gradient(to right, #E7E9BB, #403B4A);  /* Chrome 10-25, Safari 5.1-6 */
+--background: linear-gradient(to right, #E7E9BB, #403B4A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.btn1{
+  padding-left: 10px;
+}
+.btn3{
+  padding-right: 10px;
+}
+
+// ion-card{
+//   height: 300px;
+// }
+
+// swiper-container{
+//   --swiper-
+// }
+// .md swiper-slide{
+//   padding-bottom: 20px;
+// }
+
+
+
+

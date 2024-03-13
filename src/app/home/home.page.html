@@ -1,20 +1,186 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> {{'HOME.home'|translate}} </ion-title>
+    <ion-icon size="medium" slot="end" name="language-sharp"
+  (click)="presentLanguageActionSheet()"
+></ion-icon>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+  <ion-content>
+  
+  
+    <ion-searchbar placeholder="{{'HOME.search'|translate}}" [(ngModel)]="searchTerm" (ionInput)="filterTasks($event)"></ion-searchbar>
+  
+    <ion-button (click)="presentActionSheet()" class="filterButton" color="medium" expand="block" size="small">
+      <ion-icon slot="start" name="filter-outline"></ion-icon>
+      {{'HOME.filters'|translate}}</ion-button>
+  
+    <div class="button-container">
+      <ion-button class="btn1" size="small" fill="outline" [ngClass]="{'active-button': activeButton === 'All'}" 
+                  (click)="activeButton = 'All'; loadData();"> {{'HOME.all'|translate}} </ion-button>
+      
+                  <ion-button size="small" fill="outline" [ngClass]="{'active-button': activeButton === 'Incomplete'}" 
+                  (click)="activeButton = 'Incomplete'; loadIncompleteData();"> {{'HOME.incomplete'|translate}} </ion-button>
+    
+      <ion-button  class="btn3" size="small" fill="outline" [ngClass]="{'active-button': activeButton === 'Completed'}" 
+                  (click)="activeButton = 'Completed'; loadCompletedData();"> {{'HOME.completed'|translate}} </ion-button>
+      
+      <!-- <ion-button class="btn3" size="small" (click)="presentActionSheet()">
+        <ion-icon name="filter-outline"></ion-icon> 
+      </ion-button> -->
+    
+      <!-- <ion-button class="btn3" size="small" fill="outline" [ngClass]="{'active-button': activeButton === 'Incomplete'}" 
+                  (click)="activeButton = 'Incomplete'; loadIncompleteData();">Incomplete</ion-button> -->
+    </div>  
+  
+
+    <p *ngIf="taskList.length === 0" style="text-align: center;"> {{'HOME.noTasksToDisplay'|translate}} </p>
+    <p *ngIf="taskList.length > 0 && filteredTasks.length === 0" style="text-align: center;"> {{'HOME.noTasksFound'|translate}} </p>
+  
+    <!-- <swiper-container [loop]="true" [pagination]="true" [slidesPerView]="2">
+
+      <swiper-slide>
+        
+        <ion-card *ngFor="let task of filteredTasks "
+         color="{{task.taskStatus=='Completed'? 'light' : task.taskPriority == 'Low' ? 'success' : task.taskPriority == 'Medium'? 'warning': 'danger' }}"
+         [ngClass]="{'completed-task': task.taskStatus === 'Completed'}">
+
+         | paginate: { itemsPerPage: itemsPerPage, currentPage: p } 
+          <ion-icon *ngIf="task.taskStatus === 'Incomplete'" (click)="activeButton = 'Outline';changeStatus(task);" size="large" style="float: right;" name="checkmark-circle"></ion-icon> 
+          <ion-card-header>
+            <ion-card-title (click)="taskUpdate(task)" >{{ task.taskName }} </ion-card-title>
+            
+            <ion-card-subtitle>{{   task.taskPriority  }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            {{ task.taskDescription }}
+            <p>Status: {{task.taskStatus}}</p>
+          </ion-card-content>
+          <ion-icon class="delete-icon" (click)="activeButton = 'Outline';deleteTask(task)" name="trash" size="large" style="float: right;"></ion-icon>
+        </ion-card>
+
+      </swiper-slide>
+
+
+    </swiper-container> -->
+
+
+    <!-- initial-slide="0" #swiper [pagination]="{type:'bullets',clickable:true}" [slidesPerView]="1" -->
+    <!-- 
+      <ng-container *ngFor="let task of filteredTasks, let i=index">
+    <swiper-container #swiperEx initial-slide="0" pagination="true" pagination-dynamic-bullets="true" [slidesPerView]="1" >
+        <swiper-slide  class="swiper-slide">
+          <ion-view >
+            <ion-card *ngIf="i % 2 == 0" class="ion-card"
+              color="{{ task.taskStatus == 'Completed' ? 'light' : task.taskPriority == 'Low' ? 'success' : task.taskPriority == 'Medium' ? 'warning' : 'danger' }}"
+              [ngClass]="{ 'completed-task': task.taskStatus === 'Completed' }">
+              <ion-icon *ngIf="task.taskStatus === 'Incomplete'" (click)="activeButton = 'Outline'; changeStatus(task);"
+                size="large" style="float: right;" name="checkmark-circle"></ion-icon>
+              <ion-card-header>
+                <ion-card-title (click)="taskUpdate(task)">{{ task.taskName }}</ion-card-title>
+                <ion-card-subtitle>{{ task.taskPriority }}</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                {{ task?.taskDescription?.slice(0,11) }} ...
+                <p>Status: {{ task.taskStatus }}</p>
+              </ion-card-content>
+              <ion-icon class="delete-icon" (click)="activeButton = 'Outline'; deleteTask(task)" name="trash" size="large"
+                style="float: right;"></ion-icon>
+            </ion-card>
+  
+            <ion-card *ngIf="i % 2 !== 0" class="ion-card"
+              color="{{ task.taskStatus == 'Completed' ? 'light' : task.taskPriority == 'Low' ? 'success' : task.taskPriority == 'Medium' ? 'warning' : 'danger' }}"
+              [ngClass]="{ 'completed-task': task.taskStatus === 'Completed' }">
+              <ion-icon *ngIf="task.taskStatus === 'Incomplete'" (click)="activeButton = 'Outline'; changeStatus(task);"
+                size="large" style="float: right;" name="checkmark-circle"></ion-icon>
+              <ion-card-header>
+                <ion-card-title (click)="taskUpdate(task)">{{ task.taskName }}</ion-card-title>
+                <ion-card-subtitle>{{ task.taskPriority }}</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                {{ task?.taskDescription?.slice(0,11) }} ...
+                <p>Status: {{ task.taskStatus }}</p>
+              </ion-card-content>
+              <ion-icon class="delete-icon" (click)="activeButton = 'Outline'; deleteTask(task)" name="trash" size="large"
+                style="float: right;"></ion-icon>
+            </ion-card>
+
+          </ion-view>
+
+          
+        </swiper-slide>
+      </swiper-container>
+      </ng-container> -->
+
+
+
+      
+      <swiper-container #swiperEx initial-slide="0" pagination="true" pagination-dynamic-bullets="true" [slidesPerView]="1" class="my-swiper-container">
+        <ng-container *ngFor="let task of filterTaskLength">
+        <swiper-slide  class="swiper-slide" [style.padding-bottom]="paddingBottom">
+          <ion-card *ngIf="((task*2)-2) < filteredTasks.length"
+          color="{{filteredTasks[((task*2)-2)].taskStatus=='Completed'? 'light' : filteredTasks[((task*2)-2)].taskPriority == 'Low' ? 'success' : filteredTasks[((task*2)-2)].taskPriority == 'Medium'? 'warning': 'danger' }}"
+          [ngClass]="{'completed-task': filteredTasks[((task*2)-2)].taskStatus === 'Completed'}">
+          <!-- <ion-text>{{task}}, {{(task*2)-2}}</ion-text> -->
+           <ion-icon *ngIf="filteredTasks[((task*2)-2)].taskStatus === 'Incomplete'" (click)="activeButton = 'Outline';changeStatus(filteredTasks[((task*2)-2)]);" size="large" style="float: right;" name="checkmark-circle"></ion-icon> 
+           <ion-card-header>
+             <ion-card-title (click)="taskUpdate(filteredTasks[((task*2)-2)])" >{{ filteredTasks[((task*2)-2)].taskName }} </ion-card-title>
+             
+             <ion-card-subtitle>{{   filteredTasks[((task*2)-2)].taskPriority  }}</ion-card-subtitle>
+           </ion-card-header>
+           <ion-card-content>
+             {{ filteredTasks[((task*2)-2)].taskDescription }}
+             <p>Status: {{filteredTasks[((task*2)-2)].taskStatus}}</p>
+           </ion-card-content>
+           <ion-icon class="delete-icon" (click)="activeButton = 'Outline';deleteTask(filteredTasks[((task*2)-2)])" name="trash" size="large" style="float: right;"></ion-icon>
+         </ion-card>
+         <!-- card 2 -->
+         <ion-card  *ngIf="((task*2)-1) < filteredTasks.length"
+         color="{{filteredTasks[((task*2)-1)].taskStatus=='Completed'? 'light' : filteredTasks[((task*2)-1)].taskPriority == 'Low' ? 'success' : filteredTasks[((task*2)-1)].taskPriority == 'Medium'? 'warning': 'danger' }}"
+         [ngClass]="{'completed-task': filteredTasks[((task*2)-1)].taskStatus === 'Completed'}">
+         <!-- <ion-text>{{task}}, {{(task*2)-1}}</ion-text> -->
+          <ion-icon *ngIf="filteredTasks[((task*2)-1)].taskStatus === 'Incomplete'" (click)="activeButton = 'Outline';changeStatus(filteredTasks[((task*2)-1)]);" size="large" style="float: right;" name="checkmark-circle"></ion-icon> 
+          <ion-card-header>
+            <ion-card-title (click)="taskUpdate(filteredTasks[((task*2)-1)])" >{{ filteredTasks[((task*2)-1)].taskName }} </ion-card-title>
+            
+            <ion-card-subtitle>{{   filteredTasks[((task*2)-1)].taskPriority  }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            {{ filteredTasks[((task*2)-1)].taskDescription }}
+            <p>Status: {{filteredTasks[((task*2)-1)].taskStatus}}</p>
+          </ion-card-content>
+          <ion-icon class="delete-icon" (click)="activeButton = 'Outline';deleteTask(filteredTasks[((task*2)-1)])" name="trash" size="large" style="float: right;"></ion-icon>
+        </ion-card>
+        
+        </swiper-slide>  
+        </ng-container> 
+      </swiper-container>  
+
+
+
+
+
+
+
+  
+    <!-- <div *ngIf="taskList.length > 0">
+      <pagination-controls class="pagination-container" (pageChange)="p = $event" [maxSize]="5" previousLabel=""
+      nextLabel="" ></pagination-controls>
+    </div> -->
+  
+  
+  
+  
+  
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end" class="fab-button">
+      <ion-fab-button (click)="toTaskForm()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  
+  </ion-content>

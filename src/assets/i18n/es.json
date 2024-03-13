@@ -1,0 +1,89 @@
+{
+    "SIGNUP": {
+      "title": "Registro",
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "phoneNumber": "Número de teléfono",
+      "password": "Contraseña",
+      "signUp": "Registrarse",
+      "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+      "loginHere": "Inicia sesión aquí",
+      "login": "Iniciar sesión",
+      "dontHaveAccount": "¿No tienes una cuenta?",
+      "signupHere": "Regístrate aquí",
+      "copyright": "2024 Recordatorio. Todos los derechos reservados.",
+      "namePlaceHolder": "Por favor, ingrese su nombre",
+      "emailPlaceHolder": "Por favor, ingrese su correo electrónico",
+      "phoneNumberPlaceHolder": "Por favor, ingrese su número de teléfono",
+      "passwordPlaceHolder": "Por favor, ingrese su contraseña",
+      "nameError": "Por favor, ingrese un nombre válido",
+      "emailError": "Por favor, ingrese un correo electrónico válido",
+      "phoneNumberError": "Por favor, ingrese un número de teléfono válido de 10 dígitos",
+      "passwordError1": "Se requiere contraseña.",
+      "passwordError2": "La contraseña debe tener al menos 8 caracteres de longitud.",
+      "passwordError3": "La contraseña debe contener al menos un carácter numérico.",
+      "passwordError4": "La contraseña debe tener al menos 8 caracteres de longitud e incluir al menos 1 número"
+    },
+    "HOME":{
+      "menu":"Menú",
+      "home":"Inicio",
+      "filters":"Filtros",
+      "all":"Todos",
+      "incomplete":"Incompletos",
+      "completed":"Completados",
+      "noTasksToDisplay":"No hay tareas para mostrar",
+      "noTasksFound":"No se encontraron tareas",
+      "logout":"Cerrar sesión",
+      "search": "Buscar"
+  },
+  "MOVIE_LIST":{
+      "moviesList":"Lista de películas"
+  },
+  "ADD_TASK":{
+    "addTask":"Agregar Tarea",
+    "updateTask": "Actualizar Tarea",
+    "taskName":"Nombre de la Tarea",
+    "taskNamePlaceHolder":"Ingrese el Nombre de la Tarea",
+    "taskNameError":"Por favor, ingrese el Nombre de la Tarea",
+    "taskPriority":"Prioridad de la Tarea",
+    "taskPriorityPlaceHolder":"Seleccione una Prioridad de la Tarea",
+    "high":"Alta",
+    "medium":"Media",
+    "low":"Baja",
+    "taskPriorityError":"Por favor, seleccione una Prioridad de la Tarea",
+    "taskDescription":"Descripción de la Tarea",
+    "taskDescriptionPlaceHolder":"Ingrese la Descripción de la Tarea",
+    "taskDescriptionError":"Por favor, ingrese la Descripción de la Tarea",
+    "submit":"Enviar",
+    "update":"Actualizar"
+},
+"MESSAGES": {
+  "userCreated": "Usuario creado",
+  "enterDetails": "Por favor ingrese todos los detalles",
+  "emailExists": "El correo electrónico o el número de teléfono ya existe",
+  "loggedIn": "Sesión iniciada correctamente",
+  "emailPhoneError": "El correo electrónico o la contraseña son incorrectos",
+  "taskDeleted": "Tarea eliminada exitosamente",
+  "taskNotDeleted": "No se pudo eliminar la tarea",
+  "taskNotUpdated": "No se pudo actualizar la tarea",
+  "taskAdded": "Tarea agregada",
+  "taskNotCreated": "No se pudo crear la tarea",
+  "enterTaskDetails": "Por favor ingrese todos los detalles de la tarea",
+  "taskUpdatedSuccessfully": "Tarea actualizada exitosamente"
+},
+"ACTIONSHEET": {
+  "changeLanguage": "Cambiar idioma",
+  "english": "Inglés",
+  "spanish": "Español",
+  "cancel": "Cancelar"
+},
+"ALERT": {
+  "confirmDelete": "Confirmar eliminación",
+  "confirmDeleteMessage": "¿Estás seguro de que deseas eliminar esta tarea?",
+  "cancel": "Cancelar",
+  "ok": "Aceptar"
+}
+  
+  
+  }
+  

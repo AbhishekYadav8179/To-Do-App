@@ -1,0 +1,17 @@
+form{
+    // align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  
+  .input{
+    padding-top: 30px;
+    padding-bottom:30px;
+  }
+
+  ion-textarea{
+    height: 150px;
+  }

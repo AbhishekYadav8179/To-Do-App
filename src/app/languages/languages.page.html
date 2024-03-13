@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>languages</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-no-padding">
+    <ion-row justify-content-center align-items-center style="height: 100vh;">
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-list>
+          <ion-item>
+            <ion-select aria-label="language" placeholder="Change Language">
+              <ion-select-option (click)="changeLanguage('en')" value="english">English</ion-select-option>
+              <ion-select-option (click)="changeLanguage('es')" value="spanish">Spanish</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+

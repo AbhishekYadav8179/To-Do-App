@@ -1,3 +1,38 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="tertiary">
+      <ion-title> {{'HOME.menu'|translate}} </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list>
+    <ion-menu-toggle autoHide="false">
+      <ion-item [routerLink]="['/home']">
+        <ion-icon name="home" slot="start"></ion-icon>
+        <ion-label>
+          {{'HOME.home'|translate}}
+        </ion-label>
+      </ion-item>
+
+      <ion-item [routerLink]="['/movie-list']">
+        <ion-icon name="videocam" slot="start"></ion-icon>
+        <ion-label>
+          {{'MOVIE_LIST.moviesList'|translate}}
+        </ion-label>
+      </ion-item>
+
+      <ion-item (click)="logout()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        <ion-label>
+          {{'HOME.logout'|translate}}
+        </ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-list>
+  <ion-content class="ion-padding"></ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-app >
+    <ion-router-outlet></ion-router-outlet>
+  </ion-app>
+</div>
+

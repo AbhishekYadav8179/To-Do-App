@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" (click)="goBack()">
+          <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+  </ion-buttons>
+    <!-- <ion-buttons slot="start">
+      <ion-back-button >
+        <i class="button button-icon my-back-button"></i>
+      </ion-back-button>
+    </ion-buttons> -->
+    <ion-title>  {{'ADD_TASK.updateTask'|translate}} </ion-title>
+    <ion-icon size="medium" slot="end" name="language-sharp"
+    (click)="presentLanguageActionSheet()"
+  ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form #taskUpdateForm="ngForm">
+
+    <ion-item>
+      <ion-input labelPlacement="stacked" label="{{'ADD_TASK.taskName'|translate}}" placeholder="{{'ADD_TASK.taskNamePlaceHolder'|translate}}" type="text" name="newTaskName" [(ngModel)]="newTaskName" required>
+        <!-- <ion-icon slot="start" name="person-outline" aria-hidden="true"></ion-icon> -->
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="taskUpdateForm.controls['newTaskName']?.invalid && (taskUpdateForm.controls['newTaskName']?.dirty || taskUpdateForm.controls['newTaskName']?.touched)">
+      <ion-text color="danger">
+        <p> {{'ADD_TASK.taskNameError'|translate}}  </p>
+      </ion-text>
+    </ion-item>
+
+
+
+
+    <ion-item>
+      <ion-select label="{{'ADD_TASK.taskPriority'|translate}}" label-placement="stacked" placeholder="{{'ADD_TASK.taskPriorityPlaceHolder'|translate}}" [(ngModel)]="newTaskPriority" name="newTaskPriority" required>
+        <ion-select-option value="High">{{'ADD_TASK.high'|translate}}</ion-select-option>
+        <ion-select-option value="Medium">{{'ADD_TASK.medium'|translate}}</ion-select-option>
+        <ion-select-option value="Low">{{'ADD_TASK.low'|translate}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="taskUpdateForm.controls['newTaskPriority']?.invalid && (taskUpdateForm.controls['newTaskPriority']?.dirty || taskUpdateForm.controls['newTaskPriority']?.touched)">
+      <ion-text color="danger">
+        <p>{{'ADD_TASK.taskPriorityError'|translate}} </p>
+      </ion-text>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-textarea rows="5" labelPlacement="stacked" label="{{'ADD_TASK.taskDescription'|translate}}" placeholder="{{'ADD_TASK.taskDescriptionPlaceHolder'|translate}}" type="text" name="newTaskDescription" [(ngModel)]="newTaskDescription" required>
+        <!-- <ion-icon slot="start" name="person-outline" aria-hidden="true"></ion-icon> -->
+      </ion-textarea>
+    </ion-item>
+    <ion-item *ngIf="taskUpdateForm.controls['newTaskDescription']?.invalid && (taskUpdateForm.controls['newTaskDescription']?.dirty || taskUpdateForm.controls['newTaskDescription']?.touched)">
+      <ion-text color="danger">
+        <p>{{'ADD_TASK.taskDescriptionError'|translate}}</p>
+      </ion-text>
+    </ion-item>
+
+
+
+    <ion-button size="medium" style="margin-top: 30px; padding-left: 12px; padding-right: 12px;" (click)="onUpdate()">{{'ADD_TASK.update'|translate}}</ion-button>
+  </form>
+</ion-content>

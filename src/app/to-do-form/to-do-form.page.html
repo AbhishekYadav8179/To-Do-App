@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" (click)="goBack()">
+          <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+  </ion-buttons>
+    <!-- <ion-buttons slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons> -->
+    <ion-title> {{'ADD_TASK.addTask'|translate}} </ion-title>
+    <ion-icon size="medium" slot="end" name="language-sharp"
+  (click)="presentLanguageActionSheet()"
+></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #taskForm="ngForm">
+
+    <ion-item>
+      <ion-input labelPlacement="stacked" label="{{'ADD_TASK.taskName'|translate}}" placeholder="{{'ADD_TASK.taskNamePlaceHolder'|translate}}" type="text" name="taskName" [(ngModel)]="taskName" required>
+        <!-- <ion-icon slot="start" name="person-outline" aria-hidden="true"></ion-icon> -->
+      </ion-input>
+    </ion-item >
+    <ion-item *ngIf="taskForm.controls['taskName']?.invalid && (taskForm.controls['taskName']?.dirty || taskForm.controls['taskName']?.touched)">
+      <ion-text  color="danger">
+        <p> {{'ADD_TASK.taskNameError'|translate}} </p>
+      </ion-text>
+    </ion-item>
+
+
+    <ion-item>
+      
+      <ion-select label="{{'ADD_TASK.taskPriority'|translate}}" label-placement="stacked" placeholder="{{'ADD_TASK.taskPriorityPlaceHolder'|translate}}" [(ngModel)]="taskPriority" name="taskPriority" required>
+        <ion-select-option value="High">{{'ADD_TASK.high'|translate}} </ion-select-option>
+        <ion-select-option value="Medium"> {{'ADD_TASK.medium'|translate}} </ion-select-option>
+        <ion-select-option value="Low"> {{'ADD_TASK.low'|translate}} </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="taskForm.controls['taskPriority']?.invalid && (taskForm.controls['taskPriority']?.dirty || taskForm.controls['taskPriority']?.touched)">
+      <ion-text color="danger">
+        <p> {{'ADD_TASK.taskPriorityError'|translate}} </p>
+      </ion-text>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-textarea rows="5" labelPlacement="stacked" label="{{'ADD_TASK.taskDescription'|translate}}" placeholder="{{'ADD_TASK.taskDescriptionPlaceHolder'|translate}}" type="text" name="taskDescription" [(ngModel)]="taskDescription" required>
+        <!-- <ion-icon slot="start" name="person-outline" aria-hidden="true"></ion-icon> -->
+      </ion-textarea>
+    </ion-item>
+    <ion-item *ngIf="taskForm.controls['taskDescription']?.invalid && (taskForm.controls['taskDescription']?.dirty || taskForm.controls['taskDescription']?.touched)">
+      <ion-text color="danger">
+        <p>{{'ADD_TASK.taskDescriptionError'|translate}}</p>
+      </ion-text>
+    </ion-item>
+
+
+
+    <ion-button size="medium" style="margin-top: 30px; padding-left: 12px; padding-right: 12px;" (click)="onSubmit()"> {{'ADD_TASK.submit'|translate}} </ion-button>
+  </form>
+</ion-content>
